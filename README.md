@@ -25,3 +25,9 @@ Hair Salon allows the salon to add stylists and clients to a database. Each styl
 - Twig ver 1.18.0
 - PHPUnit ver 4.5.0
 - PostgreSQL ver 9.4.1
+
+##### Database creation commands
+CREATE DATABASE hair_salon;
+CREATE TABLE stylists (id serial PRIMARY KEY, name varchar);
+CREATE TABLE clients (id serial PRIMARY KEY, name varchar, stylist_id integer REFERENCES stylists);
+CREATE DATABASE hair_salon_test WITH TEMPLATE hair_salon;
