@@ -20,6 +20,21 @@
         </div>
         <button type='submit' class='btn btn-success'>Rename</button>
       </form>
+
+      <h4>Assign client to another stylist</h4>
+
+      <ul>
+        {% for stylist in stylists if stylist.getId != stylist_id %}
+          <li>
+            <form action='/reassign/{{ client.getId }}' method='post' class='inlineForm'>
+              <input name='_method' type='hidden' value='patch'>
+              <input id='stylist_id' name='stylist_id' type='hidden' value='{{ stylist.getId }}'>
+              <input type='submit' class='properLink' value='{{ stylist.getName }}'>
+            </form>
+          </li>
+        {% endfor %}
+      </ul>
+
       <form action='/'>
         <button type='submit' class='btn btn-primary'>Home</button>
       </form>

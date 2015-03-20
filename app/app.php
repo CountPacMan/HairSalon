@@ -33,7 +33,7 @@
 
   $app->get("/client/{id}/edit", function($id) use ($app) {
     $client = Client::find($id);
-    return $app['twig']->render('client_edit.html.twig', array('client' => $client, 'stylist_id' => $_GET['stylist_id']));
+    return $app['twig']->render('client_edit.html.twig', array('client' => $client, 'stylist_id' => $_GET['stylist_id'], 'stylists' => Stylist::getAll()));
   });
 
   // post **********************************
@@ -67,6 +67,14 @@
     $stylist = Stylist::find($_POST['stylist_id']);
     $client = Client::find($id);
     $client->updateName($name);
+    $clients = $stylist->getAllClients();
+    return $app['twig']->render('stylist.html.twig', array('stylist' => $stylist, 'clients' => $clients));
+  });
+
+  $app->patch("/reassign/{id}", function($id) use ($app) {
+    $client = Client::find($id);
+    $client->updateStylist($_POST['stylist_id']);
+    $stylist = Stylist::find($_POST['stylist_id']);
     $clients = $stylist->getAllClients();
     return $app['twig']->render('stylist.html.twig', array('stylist' => $stylist, 'clients' => $clients));
   });
