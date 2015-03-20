@@ -2,6 +2,7 @@
 <html>
   <head>
     <link rel='stylesheet' href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
     <title>Horrific Cuts Hair Salon</title>
   </head>
   <body>
@@ -12,7 +13,15 @@
         <p>Here are the clients:</p>
         <ul>
           {% for client in clients %}
-            <li>{{ client.getName }}</li>
+            <li>
+              <form action='/delete/{{ client.getId }}' method='post' class='inlineForm'>
+                <input name='_method' type='hidden' value='delete'>
+                <input id='stylist_id' name='stylist_id' type='hidden' value='{{ stylist.getId }}'>
+                <input id='client_id' name='client_id' type='hidden' value='{{ client.getId }}'>
+                <input type='submit' class='deleteLink' value='x'>
+              </form>
+                {{ client.getName }}
+            </li>
           {% endfor %}
         </ul>
       {% endif %}

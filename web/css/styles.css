@@ -1,0 +1,10 @@
+.deleteLink {
+background-color: transparent;
+border: none;
+color: blue;
+cursor: pointer;
+}
+
+.inlineForm {
+  display:inline;
+}
