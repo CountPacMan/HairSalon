@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel='stylesheet' href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <title>Horrific Cuts Hair Salon</title>
+  </head>
+  <body>
+    <div class='container'>
+      <h1>{{ stylist.getName }}</h1>
+
+      {% if clients is not empty %}
+        <p>Here are the clients:</p>
+        <ul>
+          {% for client in clients %}
+            <li>{{ client.getName }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+      <h4>Add a client</h4>
+
+      <form action='/clients' method='post'>
+        <input id='stylist_id' name='stylist_id' type='hidden' value='{{ stylist.getId }}'>
+        <div class='form-group'>
+          <label for='name'>Client name:</label>
+          <input id='name' name='name' class='form-control' type='text'>
+        </div>
+        <button type='submit' class='btn btn-success'>Add client!</button>
+      </form>
+
+      <p><a href='/stylists/{{ stylist.getId }}/edit'>Edit this stylist!</a></p>
+      <p><a href='/'>Home!</a></p>
+
+    </div>
+  </body>
+</html>
