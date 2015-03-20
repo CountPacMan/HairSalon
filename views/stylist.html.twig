@@ -26,6 +26,12 @@
               </form>
             </li>
           {% endfor %}
+          <li>
+            <form action='/all_clients/{{ stylist.getId }}' method='post' class='inlineForm'>
+              <input name='_method' type='hidden' value='delete'>
+              <input type='submit' class='deleteLink' value='Click here to delete ALL clients for {{ stylist.getName }}'>
+            </form>
+          </li>
         </ul>
       {% endif %}
 
