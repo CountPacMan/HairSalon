@@ -61,5 +61,22 @@
       // Assert
       $this->assertEquals($test_Stylist, $result[0]);
     }
+
+    // Spec 4
+    function test_find() {
+      // Arrange
+      $name = "Biscuitdoughhands Man";
+      $test_Stylist = new Stylist($name);
+      $name2 = "Edward Scissorhands";
+      $test_Stylist2 = new Stylist($name2);
+
+      // Act
+      $test_Stylist->save();
+      $test_Stylist2->save();
+      $result = Stylist::find($test_Stylist->getId());
+
+      // Assert
+      $this->assertEquals($test_Stylist, $result);
+    }
   }
 ?>
