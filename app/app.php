@@ -81,17 +81,36 @@
 
   // delete **********************************
 
+  // delete specific stylist
   $app->delete("/stylists/{id}", function($id) use ($app) {
     $stylist = Stylist::find($id);
     $stylist->delete();
     return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
   });
 
+  // delete specific client
   $app->delete("/client/{id}", function($id) use ($app) {
     $client = Client::find($id);
     $client->delete();
     $stylist = Stylist::find($_POST['stylist_id']);
     $clients = $stylist->getAllClients();
+    return $app['twig']->render('stylist.html.twig', array('stylist' => $stylist, 'clients' => $clients));
+  });
+
+  // delete all stylists (will delete all clients as well)
+  $app->delete("/all_stylists", function() use ($app) {
+    Client::deleteAll();
+    Stylist::deleteAll();
+    return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
+  });
+
+  // delete all clients for a particular stylist
+  $app->delete("/stylists/{id}/all", function($id) use ($app) {
+    $stylist = Stylist::find($id);
+    $clients = $stylist->getAllClients($id);
+    foreach ($clients as $client) {
+      $client->delete();
+    }
     return $app['twig']->render('stylist.html.twig', array('stylist' => $stylist, 'clients' => $clients));
   });
 

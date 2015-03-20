@@ -35,6 +35,12 @@
               </form>
             </li>
           {% endfor %}
+          <li>
+            <form action='/all_stylists' method='post' class='inlineForm'>
+              <input name='_method' type='hidden' value='delete'>
+              <input type='submit' class='deleteLink' value='Click here to delete ALL stylists'>
+            </form>
+          </li>
         </ul>
         {% else %}
           <p>There are no stylists associated with this salon.</p>
