@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel='stylesheet' href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Horrific Cuts Hair Salon</title>
+  </head>
+  <body>
+    <div class='container'>
+      <h1>{{ client.getName }}</h1>
+
+      <h4>Edit client name</h4>
+
+      <form action='/client/{{ client.getId }}' method='post'>
+        <input name='_method' type='hidden' value='patch'>
+        <input id='stylist_id' name='stylist_id' type='hidden' value='{{ stylist_id }}'>
+        <div class='form-group'>
+          <label for='name'>New name:</label>
+          <input id='name' name='name' class='form-control' type='text'>
+        </div>
+        <button type='submit' class='btn btn-success'>Rename</button>
+      </form>
+      <form action='/'>
+        <button type='submit' class='btn btn-primary'>Home</button>
+      </form>
+
+    </div>
+  </body>
+</html>

@@ -18,10 +18,12 @@
               <form action='/client/{{ client.getId }}' method='post' class='inlineForm'>
                 <input name='_method' type='hidden' value='delete'>
                 <input id='stylist_id' name='stylist_id' type='hidden' value='{{ stylist.getId }}'>
-                <input id='client_id' name='client_id' type='hidden' value='{{ client.getId }}'>
                 <input type='submit' class='deleteLink' value='x'>
               </form>
-                <strong>{{ client.getName }}</strong>
+              <form action='/client/{{ client.getId }}/edit' class='inlineForm'>
+                <input id='stylist_id' name='stylist_id' type='hidden' value='{{ stylist.getId }}'>
+                <input type='submit' class='deleteLink' value='{{ client.getName }}'>
+              </form>
             </li>
           {% endfor %}
         </ul>
