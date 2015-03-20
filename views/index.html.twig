@@ -28,9 +28,11 @@
             <li>
               <form action='/stylists/{{ stylist.getId }}' method='post' class='inlineForm'>
                 <input name='_method' type='hidden' value='delete'>
-                <input type='submit' class='deleteLink' value='x'>
+                <input type='submit' class='properLink' value='x'>
               </form>
-              <a href="/stylists/{{ stylist.getId }}">{{ stylist.getName }}</a>
+              <form action='/stylists/{{ stylist.getId }}' class='inlineForm'>
+                <input type='submit' class='properLink' value='{{ stylist.getName }}'>
+              </form>
             </li>
           {% endfor %}
         </ul>
