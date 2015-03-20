@@ -2,11 +2,19 @@ ul {
   list-style-type: none;
 }
 
+.deleteLink,
 .properLink {
   background-color: transparent;
   border: none;
-  color: blue;
   cursor: pointer;
+}
+
+.properLink {
+  color: blue;
+}
+
+.deleteLink {
+  color: grey;
 }
 
 .inlineForm {
