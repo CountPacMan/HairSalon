@@ -77,15 +77,15 @@
     }
 
     static function find($id) {
-      $found_stylists = null;
+      $found_stylist = null;
       $stylists = Stylist::getAll();
       foreach ($stylists as $stylist) {
         $stylist_id = $stylist->getId();
         if ($stylist_id == $id) {
-          $found_stylists = $stylist;
+          $found_stylist = $stylist;
         }
       }
-      return $found_stylists;
+      return $found_stylist;
     }
   }
 ?>

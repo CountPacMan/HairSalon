@@ -25,8 +25,8 @@
   });
 
   $app->get("/stylists/{id}/edit", function($id) use ($app) {
-     $stylist = Stylist::find($id);
-     return $app['twig']->render('stylist_edit.html.twig', array('stylist' => $stylist));
+    $stylist = Stylist::find($id);
+    return $app['twig']->render('stylist_edit.html.twig', array('stylist' => $stylist));
   });
 
   $app->patch("/stylists/{id}", function($id) use ($app) {
