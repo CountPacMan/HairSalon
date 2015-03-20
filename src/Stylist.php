@@ -26,6 +26,7 @@
       $this->id = (int) $id;
     }
 
+
     // DB
 
     function save() {
@@ -34,6 +35,10 @@
       $this->setId($result['id']);
     }
 
+    function update($name) {
+        $GLOBALS['DB']->exec("UPDATE stylists SET name = '{$name}' WHERE id = {$this->getId()}");
+        $this->setName($name);
+    }
 
     // static functions
 
