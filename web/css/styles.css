@@ -3,10 +3,10 @@ ul {
 }
 
 .properLink {
-background-color: transparent;
-border: none;
-color: blue;
-cursor: pointer;
+  background-color: transparent;
+  border: none;
+  color: blue;
+  cursor: pointer;
 }
 
 .inlineForm {
