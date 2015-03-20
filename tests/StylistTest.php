@@ -15,6 +15,7 @@
       Spec 3. Database saves entry.
       Spec 4. User requests a stylist by id. Returns Stylist object.
       Spec 5. User updates a stylists name. Returns updated Stylist object.
+      Spec 6. User deletes a stylist. Returns empty array of Stylist objects.
   */
 
   class StylistTest extends PHPUnit_Framework_TestCase {
@@ -93,6 +94,21 @@
 
       // Assert
       $this->assertEquals("Barber of Seville", $result[0]->getName());
+    }
+
+    // Spec 6
+    function test_delete() {
+      // Arrange
+      $name = "Biscuitdoughhands Man";
+      $test_Stylist = new Stylist($name);
+
+      // Act
+      $test_Stylist->save();
+      $test_Stylist->delete();
+      $result = Stylist::getAll();
+
+      // Assert
+      $this->assertEquals(0, count($result));
     }
   }
 ?>
