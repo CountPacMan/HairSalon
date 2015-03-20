@@ -2,7 +2,7 @@
 ## by Daniel Toader
 ### Date: March 20, 2015
 #### Description
-Hair Salon allows the salon to add stylists and clients to a database. Each stylist can have many clients but clients may only have one stylist. Edit an delete functionality is included.
+Hair Salon allows the salon to add stylists and clients to a database. Each stylist can have many clients but clients may only have one stylist. Edit, reassign, and delete functionality is included.
 
 #### Setup instructions
 1. Clone this git repository
