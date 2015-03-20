@@ -21,10 +21,15 @@
       </form>
 
       {% if stylists is not empty %}
-        <p>Here are all your stylists:</p>
+        <h4>Stylist list</h4>
+        <h6>Click on x to delete</h6>
         <ul>
           {% for stylist in stylists %}
             <li>
+              <form action='/stylists/{{ stylist.getId }}' method='post' class='inlineForm'>
+                <input name='_method' type='hidden' value='delete'>
+                <input type='submit' class='deleteLink' value='x'>
+              </form>
               <a href="/stylists/{{ stylist.getId }}">{{ stylist.getName }}</a>
             </li>
           {% endfor %}

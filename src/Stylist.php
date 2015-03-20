@@ -41,9 +41,9 @@
     }
 
     function delete() {
-        $GLOBALS['DB']->exec("DELETE FROM stylists WHERE id = {$this->getId()};");
         // I'm assuming that the client is here for the stylist and absconded when the stylist left.
         $GLOBALS['DB']->exec("DELETE FROM clients WHERE stylist_id = {$this->getId()};");
+        $GLOBALS['DB']->exec("DELETE FROM stylists WHERE id = {$this->getId()};");
     }
 
     function getAllClients() {
