@@ -57,7 +57,9 @@
   $app->delete("/client/{id}", function($id) use ($app) {
     $client = Client::find($id);
     $client->delete();
-    return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
+    $stylist = Stylist::find($_POST['stylist_id']);
+    $clients = $stylist->getAllClients();
+    return $app['twig']->render('stylist.html.twig', array('stylist' => $stylist, 'clients' => $clients));
   });
 
   $app->post("/clients", function() use ($app) {
