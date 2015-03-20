@@ -18,10 +18,9 @@
 
   class StylistTest extends PHPUnit_Framework_TestCase {
 
-    protected function tearDown() {
-      // Restaurant::deleteAll();
-      Stylist::deleteAll();
-    }
+    // protected function tearDown() {
+    //   Stylist::deleteAll();
+    // }
 
     // Spec 1
     function test_getName() {
