@@ -31,8 +31,10 @@
     function test_getName() {
       // Arrange
       $test_Stylist = new Stylist("testman");
+      $test_Stylist->save();
+      $stylist_id = $test_Stylist->getId();
       $name = "Biscuitdoughhands Man";
-      $test_Client = new Client($name, 1);
+      $test_Client = new Client($name, $stylist_id);
 
       // Act
       $result = $test_Client->getName();
@@ -45,8 +47,10 @@
     function test_getId() {
       // Arrange
       $test_Stylist = new Stylist("testman");
+      $test_Stylist->save();
+      $stylist_id = $test_Stylist->getId();
       $name = "Biscuitdoughhands Man";
-      $test_Client = new Client($name, 1, 3);
+      $test_Client = new Client($name, $stylist_id, 3);
 
       // Act
       $result = $test_Client->getId();
@@ -59,8 +63,10 @@
     function test_save() {
       // Arrange
       $test_Stylist = new Stylist("testman");
+      $test_Stylist->save();
+      $stylist_id = $test_Stylist->getId();
       $name = "Biscuitdoughhands Man";
-      $test_Client = new Client($name, 1);
+      $test_Client = new Client($name, $stylist_id);
 
       // Act
       $test_Stylist->save();
@@ -76,14 +82,16 @@
       // Arrange
       $test_Stylist = new Stylist("testman");
       $test_Stylist2 = new Stylist("testman2");
+      $test_Stylist->save();
+      $stylist_id = $test_Stylist->getId();
+      $test_Stylist2->save();
+      $stylist_id2 = $test_Stylist2->getId();
       $name = "Biscuitdoughhands Man";
-      $test_Client = new Client($name, 1, 1);
+      $test_Client = new Client($name, $stylist_id, 1);
       $name2 = "Mr Spakuru";
-      $test_Client = new Client($name2, 1, 2);
+      $test_Client2 = new Client($name2, $stylist_id2, 2);
 
       // Act
-      $test_Stylist->save();
-      $test_Stylist2->save();
       $test_Client->save();
       $test_Client2->save();
       $result = Client::find($test_Client->getId());
@@ -96,11 +104,12 @@
     function test_update() {
       // Arrange
       $test_Stylist = new Stylist("testman");
+      $test_Stylist->save();
+      $stylist_id = $test_Stylist->getId();
       $name = "Biscuitdoughhands Man";
-      $test_Client = new Client($name, 1);
+      $test_Client = new Client($name, $stylist_id);
 
       // Act
-      $test_Stylist->save();
       $test_Client->save();
       $test_Client->updateName("Mr Spakuru");
       $result = Client::getAll();
@@ -113,11 +122,12 @@
     function test_delete() {
       // Arrange
       $test_Stylist = new Stylist("testman");
+      $test_Stylist->save();
+      $stylist_id = $test_Stylist->getId();
       $name = "Biscuitdoughhands Man";
-      $test_Client = new Client($name, 1);
+      $test_Client = new Client($name, $stylist_id);
 
       // Act
-      $test_Stylist->save();
       $test_Client->save();
       $test_Client->delete();
       $result = Client::getAll();
@@ -130,17 +140,21 @@
     function test_updateStylist() {
       // Arrange
       $test_Stylist = new Stylist("testman");
+      $test_Stylist->save();
+      $test_Stylist2 = new Stylist("testman2");
+      $test_Stylist2->save();
+      $stylist_id = $test_Stylist->getId();
+      $stylist_id2 = $test_Stylist->getId();
       $name = "Biscuitdoughhands Man";
-      $test_Client = new Client($name, 1);
+      $test_Client = new Client($name, $stylist_id);
 
       // Act
-      $test_Stylist->save();
       $test_Client->save();
-      $test_Client->updateStylist(2);
+      $test_Client->updateStylist($stylist_id2);
       $result = Client::getAll();
 
       // Assert
-      $this->assertEquals(2, $result[0]->getStylistId());
+      $this->assertEquals($stylist_id2, $result[0]->getStylistId());
     }
   }
 ?>
