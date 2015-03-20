@@ -1,6 +1,7 @@
 <?php
   require_once __DIR__."/../vendor/autoload.php";
   require_once __DIR__."/../src/Stylist.php";
+  require_once __DIR__."/../src/Client.php";
 
   $app = new Silex\Application();
 
@@ -51,14 +52,14 @@
     $stylist = Stylist::find($id);
     $stylist->delete();
     return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
+  });
 
-    $app->post("/clients", function() use ($app) {
-      $client = new Client($_POST['name'], $_POST['stylist_id']);
-      $client->save();
-      $stylist = Stylist::find($_POST['stylist_id']);
-      $clients = $stylist->getAllClients();
-      return $app['twig']->render('stylist.html.twig', array('stylist' => $stylist, 'clients' => $clients));
-    });
+  $app->post("/clients", function() use ($app) {
+    $client = new Client($_POST['name'], $_POST['stylist_id']);
+    $client->save();
+    $stylist = Stylist::find($_POST['stylist_id']);
+    $clients = $stylist->getAllClients();
+    return $app['twig']->render('stylist.html.twig', array('stylist' => $stylist, 'clients' => $clients));
   });
 
   return $app;
